@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Response Status</title>
+</head>
+<body>
+{% extends 'index.html' %}
+{% block content %}
+
+<h3>{{ response }}</h3>
+{% for values in data %}
+<ul>
+    <li>{{values}}</li>
+</ul>
+{% endfor %}
+{% endblock content%}
+</body>
+</html>

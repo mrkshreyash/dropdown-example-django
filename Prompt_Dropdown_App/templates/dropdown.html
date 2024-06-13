@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dropdown</title>
+</head>
+<body>
+{% extends "index.html" %}
+{% block content %}
+
+<div class="row justify-content-md-center">
+    <div>
+        <form action="{% url 'insert_data' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">
+                INSERT DATA TO THE DATABASE
+            </button>
+        </form>
+    </div>
+</div>
+
+<hr>
+
+<div class="row justify-content-md-center">
+    <div class="col col-4 ">
+        <select class="form-select col-3s bg-secondary text-white" aria-label="Default select example">
+            <option selected>Generation Options</option>
+            <option value="from-gpt">Online GPT data</option>
+            <option value="from-singledoc">Upload single document (coming soon)</option>
+            <option value="from-multidocs">Upload multiple documents (coming soon)</option>
+            <option value="from-url">From Url (coming soon)</option>
+        </select>
+    </div>
+    <div class="col col-4 ">
+        <select class="form-select col-3 bg-secondary text-white" aria-label="Default select example">
+            <option selected>Field of Study</option>
+            {% for category in categories %}
+                <option value={{category}}>
+                    {{ category }}
+                </option>
+            {% endfor %}
+
+        </select>
+    </div>
+</div>
+<hr>
+<div class="row justify-content-md-center">
+    <div class="col col-8 ">
+        <select class="form-select col-3 bg-secondary text-white" aria-label="Default select example">
+            <option selected>Default Prompts</option>
+            {% for prompt in prompts %}
+            <option value="prompt1">{{ prompt}}</option>
+            {% endfor %}
+
+        </select>
+    </div>
+</div>
+
+{% endblock content %}
+</body>
+</html>
